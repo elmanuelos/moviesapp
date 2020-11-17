@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { MoviesService } from './services/movies.service';
+import { Movies } from './interfaces/nowPlaying-response';
+
 
 @Component({
   selector: 'app-root',
@@ -7,4 +10,14 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'moviesApp';
+
+
+constructor (private moviesService:MoviesService){
+
+    this.moviesService.getMovies().subscribe(resp=>{
+      console.log(resp);
+    })
 }
+
+}
+
